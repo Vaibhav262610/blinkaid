@@ -256,27 +256,28 @@ export default function DriverDashboard() {
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <header className="bg-white border-b">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+        <div className="container mx-auto px-3 sm:px-4 py-3 sm:py-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <div className="bg-red-600 p-2 rounded-lg">
               <Ambulance className="h-6 w-6 text-white" />
             </div>
             <span className="text-xl font-bold text-gray-900">RapidResponse Driver</span>
           </div>
-          <div className="flex items-center gap-4">
-            <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 sm:gap-4">
+            <div className="hidden sm:flex items-center gap-2">
               <span className="text-sm text-gray-600">Status:</span>
               <Badge className={isOnline ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800"}>
                 {isOnline ? "Online" : "Offline"}
               </Badge>
             </div>
-            <div className="flex items-center gap-2">
-              <span className="text-sm">Go Online</span>
+            <div className="flex items-center gap-1 sm:gap-2">
+              <span className="text-xs sm:text-sm">Online</span>
               <Switch checked={isOnline} onCheckedChange={setIsOnline} />
             </div>
             <Button 
               variant="outline" 
               size="sm"
+              className="text-xs sm:text-sm"
               onClick={() => {
                 localStorage.removeItem('token')
                 localStorage.removeItem('user')
@@ -290,22 +291,22 @@ export default function DriverDashboard() {
         </div>
       </header>
 
-      <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto px-3 sm:px-4 py-4 sm:py-8">
         {/* Welcome Section */}
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">
+        <div className="mb-6 sm:mb-8">
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">
             Welcome, {driver.driver?.firstName} {driver.driver?.lastName}!
           </h1>
-          <p className="text-gray-600">
+          <p className="text-sm sm:text-base text-gray-600">
             Ambulance Unit: {driver.vehicleNumber} | License: {driver.driver?.licenseNumber}
           </p>
         </div>
 
         {/* Status Alert */}
         {!isOnline && (
-          <Alert className="mb-8 border-yellow-200 bg-yellow-50">
-            <AlertTriangle className="h-4 w-4 text-yellow-600" />
-            <AlertDescription className="text-yellow-800">
+          <Alert className="mb-4 sm:mb-8 border-yellow-200 bg-yellow-50">
+            <AlertTriangle className="h-4 w-4 text-yellow-600 flex-shrink-0" />
+            <AlertDescription className="text-yellow-800 text-sm sm:text-base">
               <strong>You're offline.</strong> Turn on your status to receive emergency requests.
             </AlertDescription>
           </Alert>
@@ -379,23 +380,23 @@ export default function DriverDashboard() {
         )}
 
         {/* Main Content */}
-        <Tabs defaultValue="requests" className="space-y-6">
+        <Tabs defaultValue="requests" className="space-y-4 sm:space-y-6">
           <TabsList className="grid w-full grid-cols-4">
-            <TabsTrigger value="requests">Pending Requests</TabsTrigger>
-            <TabsTrigger value="history">Trip History</TabsTrigger>
-            <TabsTrigger value="stats">Statistics</TabsTrigger>
-            <TabsTrigger value="settings">Settings</TabsTrigger>
+            <TabsTrigger value="requests" className="text-xs sm:text-sm">Pending</TabsTrigger>
+            <TabsTrigger value="history" className="text-xs sm:text-sm">History</TabsTrigger>
+            <TabsTrigger value="stats" className="text-xs sm:text-sm">Stats</TabsTrigger>
+            <TabsTrigger value="settings" className="text-xs sm:text-sm">Settings</TabsTrigger>
           </TabsList>
 
-          <TabsContent value="requests" className="space-y-6">
+          <TabsContent value="requests" className="space-y-4 sm:space-y-6">
             <Card>
-              <CardHeader>
-                <CardTitle>Pending Emergency Requests</CardTitle>
-                <CardDescription>
+              <CardHeader className="pb-4">
+                <CardTitle className="text-lg sm:text-xl">Pending Emergency Requests</CardTitle>
+                <CardDescription className="text-sm">
                   {isOnline ? "Available requests in your area" : "Go online to see available requests"}
                 </CardDescription>
               </CardHeader>
-              <CardContent>
+              <CardContent className="px-4 sm:px-6">
                 {isOnline ? (
                   <div className="space-y-4">
                     {pendingRequests.map((request) => (
@@ -436,15 +437,20 @@ export default function DriverDashboard() {
                               )}
                             </div>
                           </div>
-                          <div className="flex gap-2">
+                          <div className="flex flex-col sm:flex-row gap-2">
                             <Button
                               onClick={() => handleAcceptRequest(request._id)}
                               className="bg-green-600 hover:bg-green-700"
+                              size="sm"
                             >
                               <CheckCircle className="h-4 w-4 mr-2" />
                               Accept
                             </Button>
-                            <Button variant="outline" onClick={() => handleDeclineRequest(request._id)}>
+                            <Button 
+                              variant="outline" 
+                              onClick={() => handleDeclineRequest(request._id)}
+                              size="sm"
+                            >
                               <XCircle className="h-4 w-4 mr-2" />
                               Decline
                             </Button>
@@ -460,9 +466,11 @@ export default function DriverDashboard() {
                                 findNearestHospital(request.pickupLocation)
                                 setShowMap(true)
                               }}
+                              size="sm"
                             >
                               <Navigation className="h-4 w-4 mr-2" />
-                              View Route
+                              <span className="hidden sm:inline">View Route</span>
+                              <span className="sm:hidden">Route</span>
                             </Button>
                           </div>
                         </CardContent>

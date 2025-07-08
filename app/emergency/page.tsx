@@ -162,32 +162,32 @@ export default function EmergencyPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-red-50 to-blue-50 p-4">
+    <div className="min-h-screen bg-gradient-to-br from-red-50 to-blue-50 p-2 sm:p-4">
       <div className="max-w-2xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-8">
-          <div className="bg-red-600 p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-            <Ambulance className="h-8 w-8 text-white" />
+        <div className="text-center mb-6 sm:mb-8">
+          <div className="bg-red-600 p-3 sm:p-4 rounded-full w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-3 sm:mb-4 flex items-center justify-center">
+            <Ambulance className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
           </div>
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Emergency Request</h1>
-          <p className="text-gray-600">Fill out the details below to request immediate medical assistance</p>
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">Emergency Request</h1>
+          <p className="text-sm sm:text-base text-gray-600 px-2">Fill out the details below to request immediate medical assistance</p>
         </div>
 
         {/* Emergency Alert */}
-        <Alert className="mb-6 border-red-200 bg-red-50">
-          <AlertTriangle className="h-4 w-4 text-red-600" />
-          <AlertDescription className="text-red-800">
+        <Alert className="mb-4 sm:mb-6 border-red-200 bg-red-50">
+          <AlertTriangle className="h-4 w-4 text-red-600 flex-shrink-0" />
+          <AlertDescription className="text-red-800 text-sm sm:text-base">
             <strong>Life-threatening emergency?</strong> Call 911 immediately or press the emergency button below.
           </AlertDescription>
         </Alert>
 
         {/* Quick Emergency Button */}
-        <Card className="mb-6 border-red-200">
-          <CardContent className="pt-6">
+        <Card className="mb-4 sm:mb-6 border-red-200">
+          <CardContent className="pt-4 sm:pt-6">
             <Button
               onClick={handleEmergencyRequest}
               disabled={isRequesting}
-              className="w-full h-16 text-xl bg-red-600 hover:bg-red-700"
+              className="w-full h-14 sm:h-16 text-lg sm:text-xl bg-red-600 hover:bg-red-700"
             >
               {isRequesting ? (
                 <>
@@ -198,7 +198,7 @@ export default function EmergencyPage() {
                 <>🚨 EMERGENCY - SEND REQUEST NOW</>
               )}
             </Button>
-            <p className="text-center text-sm text-gray-600 mt-2">
+            <p className="text-center text-xs sm:text-sm text-gray-600 mt-2 px-2">
               One-tap emergency request with your current location
             </p>
           </CardContent>
@@ -206,11 +206,11 @@ export default function EmergencyPage() {
 
         {/* Detailed Form */}
         <Card>
-          <CardHeader>
-            <CardTitle>Emergency Details</CardTitle>
-            <CardDescription>Provide additional information to help responders prepare</CardDescription>
+          <CardHeader className="pb-4">
+            <CardTitle className="text-lg sm:text-xl">Emergency Details</CardTitle>
+            <CardDescription className="text-sm">Provide additional information to help responders prepare</CardDescription>
           </CardHeader>
-          <CardContent className="space-y-4">
+          <CardContent className="space-y-4 px-4 sm:px-6">
             {/* Location */}
             <div className="space-y-2">
               <Label>Current Location</Label>
@@ -285,7 +285,7 @@ export default function EmergencyPage() {
             </div>
 
             {/* Patient Info */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
               <div className="space-y-2">
                 <Label htmlFor="patientAge">Patient Age</Label>
                 <Input id="patientAge" type="number" placeholder="Age" />

@@ -9,7 +9,7 @@ export default function HomePage() {
     <div className="min-h-screen bg-gradient-to-br from-red-50 to-blue-50">
       {/* Header */}
       <header className="border-b bg-white/80 backdrop-blur-sm sticky top-0 z-50">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+        <div className="container mx-auto px-3 sm:px-4 py-3 sm:py-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <div className="bg-red-600 p-2 rounded-lg">
               <Ambulance className="h-6 w-6 text-white" />
@@ -27,37 +27,37 @@ export default function HomePage() {
               Contact
             </Link>
           </nav>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3">
             <Link href="/login">
-              <Button variant="outline">Login</Button>
+              <Button variant="outline" size="sm" className="text-xs sm:text-sm">Login</Button>
             </Link>
             <Link href="/signup">
-              <Button className="bg-red-600 hover:bg-red-700">Get Started</Button>
+              <Button size="sm" className="bg-red-600 hover:bg-red-700 text-xs sm:text-sm">Get Started</Button>
             </Link>
           </div>
         </div>
       </header>
 
       {/* Hero Section */}
-      <section className="py-20 px-4">
+      <section className="py-12 sm:py-20 px-3 sm:px-4">
         <div className="container mx-auto text-center">
-          <Badge className="mb-4 bg-red-100 text-red-800 hover:bg-red-100">🚨 Emergency Response Platform</Badge>
-          <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
+          <Badge className="mb-3 sm:mb-4 bg-red-100 text-red-800 hover:bg-red-100 text-xs sm:text-sm">🚨 Emergency Response Platform</Badge>
+          <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-gray-900 mb-4 sm:mb-6">
             Connect to the Nearest
             <span className="text-red-600 block">Ambulance in Seconds</span>
           </h1>
-          <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+          <p className="text-base sm:text-xl text-gray-600 mb-6 sm:mb-8 max-w-3xl mx-auto px-2">
             Revolutionary emergency response network that connects patients with nearby ambulances in real-time. Every
             second counts in an emergency.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
             <Link href="/emergency">
-              <Button size="lg" className="bg-red-600 hover:bg-red-700 text-lg px-8 py-4">
+              <Button size="lg" className="bg-red-600 hover:bg-red-700 text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4">
                 🚨 Emergency Request
               </Button>
             </Link>
             <Link href="/signup">
-              <Button size="lg" variant="outline" className="text-lg px-8 py-4 bg-transparent">
+              <Button size="lg" variant="outline" className="text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 bg-transparent">
                 Join as Driver
               </Button>
             </Link>

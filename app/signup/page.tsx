@@ -91,17 +91,17 @@ export default function SignupPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-red-50 to-blue-50 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-red-50 to-blue-50 flex items-center justify-center p-3 sm:p-4">
       <Card className="w-full max-w-2xl">
         <CardHeader className="text-center">
-          <div className="flex items-center justify-center gap-2 mb-4">
+          <div className="flex items-center justify-center gap-2 mb-3 sm:mb-4">
             <div className="bg-red-600 p-2 rounded-lg">
-              <Ambulance className="h-6 w-6 text-white" />
+              <Ambulance className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
             </div>
-            <span className="text-xl font-bold text-gray-900">RapidResponse</span>
+            <span className="text-lg sm:text-xl font-bold text-gray-900">RapidResponse</span>
           </div>
-          <CardTitle className="text-2xl">Join Our Network</CardTitle>
-          <CardDescription>Create your account to access emergency response services</CardDescription>
+          <CardTitle className="text-xl sm:text-2xl">Join Our Network</CardTitle>
+          <CardDescription className="text-sm">Create your account to access emergency response services</CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSignup} className="space-y-4">
@@ -119,7 +119,7 @@ export default function SignupPage() {
               </Select>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
               <div className="space-y-2">
                 <Label htmlFor="firstName">First Name</Label>
                 <Input
@@ -142,7 +142,7 @@ export default function SignupPage() {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
               <div className="space-y-2">
                 <Label htmlFor="email">Email</Label>
                 <Input
@@ -168,7 +168,7 @@ export default function SignupPage() {
             </div>
 
             {userType === "driver" && (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 <div className="space-y-2">
                   <Label htmlFor="licenseNumber">Driver License Number</Label>
                   <Input
@@ -202,7 +202,7 @@ export default function SignupPage() {
               />
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
               <div className="space-y-2">
                 <Label htmlFor="password">Password</Label>
                 <div className="relative">

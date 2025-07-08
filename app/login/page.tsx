@@ -77,17 +77,17 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-red-50 to-blue-50 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-red-50 to-blue-50 flex items-center justify-center p-3 sm:p-4">
       <Card className="w-full max-w-md">
         <CardHeader className="text-center">
-          <div className="flex items-center justify-center gap-2 mb-4">
+          <div className="flex items-center justify-center gap-2 mb-3 sm:mb-4">
             <div className="bg-red-600 p-2 rounded-lg">
-              <Ambulance className="h-6 w-6 text-white" />
+              <Ambulance className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
             </div>
-            <span className="text-xl font-bold text-gray-900">RapidResponse</span>
+            <span className="text-lg sm:text-xl font-bold text-gray-900">RapidResponse</span>
           </div>
-          <CardTitle className="text-2xl">Welcome Back</CardTitle>
-          <CardDescription>Sign in to access your emergency response dashboard</CardDescription>
+          <CardTitle className="text-xl sm:text-2xl">Welcome Back</CardTitle>
+          <CardDescription className="text-sm">Sign in to access your emergency response dashboard</CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleLogin} className="space-y-4">

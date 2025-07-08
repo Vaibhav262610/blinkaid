@@ -189,39 +189,39 @@ export default function TrackingPage() {
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <header className="bg-white border-b">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+        <div className="container mx-auto px-3 sm:px-4 py-3 sm:py-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <div className="bg-red-600 p-2 rounded-lg">
               <Ambulance className="h-6 w-6 text-white" />
             </div>
             <span className="text-xl font-bold text-gray-900">Emergency Tracking</span>
           </div>
-          <div className="flex items-center gap-4">
-            <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 sm:gap-4">
+            <div className="hidden sm:flex items-center gap-2">
               <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
               <span className="text-sm text-gray-600">
                 Last updated: {lastUpdate.toLocaleTimeString()}
               </span>
             </div>
             <Link href="/dashboard/user">
-              <Button variant="outline" size="sm">
-                Back to Dashboard
+              <Button variant="outline" size="sm" className="text-xs sm:text-sm">
+                Back
               </Button>
             </Link>
           </div>
         </div>
       </header>
 
-      <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto px-3 sm:px-4 py-4 sm:py-8">
         {/* Emergency Alert */}
-        <Alert className="mb-6 border-red-200 bg-red-50">
-          <AlertTriangle className="h-4 w-4 text-red-600" />
-          <AlertDescription className="text-red-800">
+        <Alert className="mb-4 sm:mb-6 border-red-200 bg-red-50">
+          <AlertTriangle className="h-4 w-4 text-red-600 flex-shrink-0" />
+          <AlertDescription className="text-red-800 text-sm sm:text-base">
             <strong>Emergency in progress!</strong> Help is on the way. Stay calm and follow instructions.
           </AlertDescription>
         </Alert>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
           {/* Map Section */}
           <div className="lg:col-span-2">
             <Map
@@ -235,7 +235,7 @@ export default function TrackingPage() {
           </div>
 
           {/* Status Panel */}
-          <div className="space-y-6">
+          <div className="space-y-4 sm:space-y-6">
             {/* Request Status */}
             <Card>
               <CardHeader>

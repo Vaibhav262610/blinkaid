@@ -188,24 +188,25 @@ export default function AdminDashboard() {
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <header className="bg-white border-b">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+        <div className="container mx-auto px-3 sm:px-4 py-3 sm:py-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <div className="bg-red-600 p-2 rounded-lg">
               <Shield className="h-6 w-6 text-white" />
             </div>
             <span className="text-xl font-bold text-gray-900">RapidResponse Admin</span>
           </div>
-          <div className="flex items-center gap-4">
-            <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 sm:gap-4">
+            <div className="hidden sm:flex items-center gap-2">
               <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
               <span className="text-sm text-gray-600">
                 Last updated: {lastUpdate.toLocaleTimeString()}
               </span>
             </div>
-            <Badge className="bg-green-100 text-green-800">System Online</Badge>
+            <Badge className="bg-green-100 text-green-800 text-xs sm:text-sm">System Online</Badge>
             <Button 
               variant="outline" 
               size="sm"
+              className="text-xs sm:text-sm"
               onClick={() => {
                 localStorage.removeItem('token')
                 localStorage.removeItem('user')
@@ -219,17 +220,17 @@ export default function AdminDashboard() {
         </div>
       </header>
 
-      <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto px-3 sm:px-4 py-4 sm:py-8">
         {/* Welcome Section */}
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">
+        <div className="mb-6 sm:mb-8">
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">
             Welcome, {admin.firstName} {admin.lastName}!
           </h1>
-          <p className="text-gray-600">Monitor and manage the emergency response network</p>
+          <p className="text-sm sm:text-base text-gray-600">Monitor and manage the emergency response network</p>
         </div>
 
         {/* Key Metrics */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 mb-8">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-6 mb-6 sm:mb-8">
           <Card>
             <CardContent className="pt-6">
               <div className="text-center">
@@ -277,14 +278,14 @@ export default function AdminDashboard() {
         </div>
 
         {/* Main Content */}
-        <Tabs defaultValue="overview" className="space-y-6">
-          <TabsList className="grid w-full grid-cols-6">
-            <TabsTrigger value="overview">Overview</TabsTrigger>
-            <TabsTrigger value="requests">Users</TabsTrigger>
-            <TabsTrigger value="drivers">Ambulances</TabsTrigger>
-            <TabsTrigger value="pending">Pending Approvals</TabsTrigger>
-            <TabsTrigger value="analytics">Analytics</TabsTrigger>
-            <TabsTrigger value="system">System</TabsTrigger>
+        <Tabs defaultValue="overview" className="space-y-4 sm:space-y-6">
+          <TabsList className="grid w-full grid-cols-3 sm:grid-cols-6">
+            <TabsTrigger value="overview" className="text-xs sm:text-sm">Overview</TabsTrigger>
+            <TabsTrigger value="requests" className="text-xs sm:text-sm">Users</TabsTrigger>
+            <TabsTrigger value="drivers" className="text-xs sm:text-sm">Ambulances</TabsTrigger>
+            <TabsTrigger value="pending" className="text-xs sm:text-sm">Approvals</TabsTrigger>
+            <TabsTrigger value="analytics" className="text-xs sm:text-sm">Analytics</TabsTrigger>
+            <TabsTrigger value="system" className="text-xs sm:text-sm">System</TabsTrigger>
           </TabsList>
 
           <TabsContent value="overview" className="space-y-6">

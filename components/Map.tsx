@@ -354,22 +354,22 @@ export default function Map({
       </CardHeader>
       <CardContent className="space-y-4">
         {/* Status Bar */}
-        <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-          <div className="flex items-center gap-4">
-            <div className="flex items-center gap-2">
-              <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-              <span className="text-sm">Emergency</span>
+        <div className="flex items-center justify-between p-2 sm:p-3 bg-gray-50 rounded-lg">
+          <div className="flex items-center gap-2 sm:gap-4">
+            <div className="flex items-center gap-1 sm:gap-2">
+              <div className="w-2 h-2 sm:w-3 sm:h-3 bg-red-500 rounded-full"></div>
+              <span className="text-xs sm:text-sm">Emergency</span>
             </div>
             {driverLocation && (
-              <div className="flex items-center gap-2">
-                <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-                <span className="text-sm">Ambulance</span>
+              <div className="flex items-center gap-1 sm:gap-2">
+                <div className="w-2 h-2 sm:w-3 sm:h-3 bg-blue-500 rounded-full"></div>
+                <span className="text-xs sm:text-sm">Ambulance</span>
               </div>
             )}
             {hospitalLocation && (
-              <div className="flex items-center gap-2">
-                <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                <span className="text-sm">Hospital</span>
+              <div className="flex items-center gap-1 sm:gap-2">
+                <div className="w-2 h-2 sm:w-3 sm:h-3 bg-green-500 rounded-full"></div>
+                <span className="text-xs sm:text-sm">Hospital</span>
               </div>
             )}
           </div>
@@ -394,27 +394,31 @@ export default function Map({
         />
 
         {/* Action Buttons */}
-        <div className="flex gap-2">
+        <div className="flex flex-col sm:flex-row gap-2">
           <Button 
             onClick={openInGoogleMaps}
             className="flex-1"
             variant="outline"
+            size="sm"
           >
             <Navigation className="h-4 w-4 mr-2" />
-            Open in Google Maps
+            <span className="hidden sm:inline">Open in Google Maps</span>
+            <span className="sm:hidden">Google Maps</span>
           </Button>
           <Button 
             onClick={findNearestHospital}
             className="flex-1"
             variant="outline"
+            size="sm"
           >
             <Building2 className="h-4 w-4 mr-2" />
-            Find Nearest Hospital
+            <span className="hidden sm:inline">Find Nearest Hospital</span>
+            <span className="sm:hidden">Find Hospital</span>
           </Button>
         </div>
 
         {/* Info Panel */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
           <div className="flex items-center gap-3 p-3 bg-red-50 rounded-lg">
             <div className="w-3 h-3 bg-red-500 rounded-full"></div>
             <div>

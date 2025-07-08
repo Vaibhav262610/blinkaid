@@ -105,18 +105,19 @@ export default function UserDashboard() {
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <header className="bg-white border-b">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+        <div className="container mx-auto px-3 sm:px-4 py-3 sm:py-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <div className="bg-red-600 p-2 rounded-lg">
               <Ambulance className="h-6 w-6 text-white" />
             </div>
             <span className="text-xl font-bold text-gray-900">RapidResponse</span>
           </div>
-          <div className="flex items-center gap-4">
-            <Badge className="bg-green-100 text-green-800">Active User</Badge>
+          <div className="flex items-center gap-2 sm:gap-4">
+            <Badge className="bg-green-100 text-green-800 text-xs sm:text-sm">Active User</Badge>
             <Button 
               variant="outline" 
               size="sm"
+              className="text-xs sm:text-sm"
               onClick={() => {
                 localStorage.removeItem('token')
                 localStorage.removeItem('user')
@@ -130,25 +131,25 @@ export default function UserDashboard() {
         </div>
       </header>
 
-      <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto px-3 sm:px-4 py-4 sm:py-8">
         {/* Welcome Section */}
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">
+        <div className="mb-6 sm:mb-8">
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">
             Welcome back, {user.firstName} {user.lastName}!
           </h1>
-          <p className="text-gray-600">Your emergency response dashboard</p>
+          <p className="text-sm sm:text-base text-gray-600">Your emergency response dashboard</p>
         </div>
 
         {/* Emergency Alert */}
-        <Alert className="mb-8 border-red-200 bg-red-50">
-          <AlertTriangle className="h-4 w-4 text-red-600" />
-          <AlertDescription className="text-red-800">
+        <Alert className="mb-4 sm:mb-8 border-red-200 bg-red-50">
+          <AlertTriangle className="h-4 w-4 text-red-600 flex-shrink-0" />
+          <AlertDescription className="text-red-800 text-sm sm:text-base">
             <strong>Emergency?</strong> Use the button below for immediate assistance or call 911.
           </AlertDescription>
         </Alert>
 
         {/* Quick Actions */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-6 sm:mb-8">
           <Link href="/emergency">
             <Card className="border-red-200 hover:border-red-300 transition-colors cursor-pointer">
               <CardContent className="pt-6">
@@ -197,12 +198,12 @@ export default function UserDashboard() {
         </div>
 
         {/* Main Content */}
-        <Tabs defaultValue="overview" className="space-y-6">
+        <Tabs defaultValue="overview" className="space-y-4 sm:space-y-6">
           <TabsList className="grid w-full grid-cols-4">
-            <TabsTrigger value="overview">Overview</TabsTrigger>
-            <TabsTrigger value="history">History</TabsTrigger>
-            <TabsTrigger value="profile">Profile</TabsTrigger>
-            <TabsTrigger value="settings">Settings</TabsTrigger>
+            <TabsTrigger value="overview" className="text-xs sm:text-sm">Overview</TabsTrigger>
+            <TabsTrigger value="history" className="text-xs sm:text-sm">History</TabsTrigger>
+            <TabsTrigger value="profile" className="text-xs sm:text-sm">Profile</TabsTrigger>
+            <TabsTrigger value="settings" className="text-xs sm:text-sm">Settings</TabsTrigger>
           </TabsList>
 
           <TabsContent value="overview" className="space-y-6">
