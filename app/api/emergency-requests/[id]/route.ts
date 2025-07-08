@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
-import EmergencyRequest from '@/lib/models/EmergencyRequest';
+import { EmergencyRequest } from '@/lib/models';
 
 // GET - Get specific emergency request
 export async function GET(

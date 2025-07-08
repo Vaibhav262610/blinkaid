@@ -1,17 +1,18 @@
 import { NextRequest, NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
-import Ambulance from '@/lib/models/Ambulance';
+import { Ambulance } from '@/lib/models';
 
 export async function POST(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     await dbConnect();
+    const { id } = await params;
     const { approved } = await request.json();
 
     const ambulance = await Ambulance.findByIdAndUpdate(
-      params.id,
+      id,
       { isApproved: approved },
       { new: true }
     ).select('-driver.password');

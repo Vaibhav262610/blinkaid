@@ -1,9 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
-import User from '@/lib/models/User';
-import Admin from '@/lib/models/Admin';
-import Ambulance from '@/lib/models/Ambulance';
-import EmergencyRequest from '@/lib/models/EmergencyRequest';
+import { User, Admin, Ambulance, EmergencyRequest } from '@/lib/models';
 
 export async function GET(request: NextRequest) {
   try {

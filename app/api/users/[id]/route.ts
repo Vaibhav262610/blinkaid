@@ -1,15 +1,16 @@
 import { NextRequest, NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
-import User from '@/lib/models/User';
+import { User } from '@/lib/models';
 
 // GET user by ID
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     await dbConnect();
-    const user = await User.findById(params.id).select('-password');
+    const { id } = await params;
+    const user = await User.findById(id).select('-password');
 
     if (!user) {
       return NextResponse.json(
@@ -32,10 +33,11 @@ export async function GET(
 // PUT update user
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     await dbConnect();
+    const { id } = await params;
     const updateData = await request.json();
 
     // Remove password from update data if it's not being changed
@@ -44,7 +46,7 @@ export async function PUT(
     }
 
     const user = await User.findByIdAndUpdate(
-      params.id,
+      id,
       updateData,
       { new: true, runValidators: true }
     ).select('-password');
@@ -81,12 +83,13 @@ export async function PUT(
 // DELETE user (soft delete)
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     await dbConnect();
+    const { id } = await params;
     const user = await User.findByIdAndUpdate(
-      params.id,
+      id,
       { isActive: false },
       { new: true }
     ).select('-password');

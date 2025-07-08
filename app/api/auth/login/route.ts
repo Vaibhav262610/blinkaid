@@ -1,8 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
-import User from '@/lib/models/User';
-import Admin from '@/lib/models/Admin';
-import Ambulance from '@/lib/models/Ambulance';
+import { User, Admin, Ambulance } from '@/lib/models';
 import jwt from 'jsonwebtoken';
 
 const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key';

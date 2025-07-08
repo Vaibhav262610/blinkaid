@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
-import EmergencyRequest from '@/lib/models/EmergencyRequest';
-import User from '@/lib/models/User';
+import { EmergencyRequest, User } from '@/lib/models';
 
 // GET - Fetch emergency requests (for drivers and admins)
 export async function GET(request: NextRequest) {

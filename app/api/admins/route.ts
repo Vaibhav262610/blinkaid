@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
-import Admin from '@/lib/models/Admin';
+import { Admin } from '@/lib/models';
 
 // GET all admins
 export async function GET(request: NextRequest) {
