@@ -4,7 +4,7 @@ export interface IEmergencyRequest extends Document {
   requestId: string;
   userId: mongoose.Types.ObjectId;
   driverId?: mongoose.Types.ObjectId;
-  emergencyType: 'cardiac' | 'traffic_accident' | 'breathing_difficulty' | 'injury' | 'other';
+  emergencyType: 'cardiac' | 'accident' | 'breathing' | 'stroke' | 'trauma' | 'overdose' | 'allergic' | 'other';
   priority: 'low' | 'medium' | 'high' | 'critical';
   status: 'pending' | 'assigned' | 'en_route' | 'arrived' | 'completed' | 'cancelled';
   
@@ -30,7 +30,7 @@ export interface IEmergencyRequest extends Document {
     name: string;
     age?: number;
     gender?: 'male' | 'female' | 'other';
-    phone: string;
+    phone?: string;
     bloodType?: string;
     allergies?: string[];
     medicalConditions?: string[];
@@ -75,7 +75,7 @@ const emergencyRequestSchema = new Schema<IEmergencyRequest>({
   },
   emergencyType: {
     type: String,
-    enum: ['cardiac', 'traffic_accident', 'breathing_difficulty', 'injury', 'other'],
+    enum: ['cardiac', 'accident', 'breathing', 'stroke', 'trauma', 'overdose', 'allergic', 'other'],
     required: true
   },
   priority: {
@@ -119,7 +119,8 @@ const emergencyRequestSchema = new Schema<IEmergencyRequest>({
     },
     phone: {
       type: String,
-      required: true
+      required: false,
+      default: 'Emergency - No phone provided'
     },
     bloodType: String,
     allergies: [String],

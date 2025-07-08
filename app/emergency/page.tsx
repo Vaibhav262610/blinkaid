@@ -65,8 +65,8 @@ export default function EmergencyPage() {
         },
         patientDetails: {
           name: `${user.firstName} ${user.lastName}`,
-          phone: user.phone,
-          bloodType: user.bloodType,
+          phone: user.phone || 'Emergency - No phone provided',
+          bloodType: user.bloodType || '',
           allergies: user.allergies || [],
           medicalConditions: user.medicalConditions || []
         },

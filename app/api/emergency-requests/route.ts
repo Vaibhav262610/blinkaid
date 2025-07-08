@@ -75,16 +75,34 @@ export async function POST(request: NextRequest) {
     await dbConnect();
     const body = await request.json();
 
+    console.log('Received request body:', JSON.stringify(body, null, 2));
+
     // Validate required fields
     const requiredFields = ['emergencyType', 'pickupLocation', 'patientDetails', 'description'];
     for (const field of requiredFields) {
       if (!body[field]) {
+        console.error(`Missing required field: ${field}`);
         return NextResponse.json(
           { error: `Missing required field: ${field}` },
           { status: 400 }
         );
       }
     }
+
+    // Validate patientDetails structure - phone is optional for emergencies
+    if (!body.patientDetails.name) {
+      console.error('Missing patientDetails.name');
+      return NextResponse.json(
+        { error: 'Patient name is required' },
+        { status: 400 }
+      );
+    }
+
+    console.log('Creating emergency request with data:', {
+      userId: body.userId,
+      emergencyType: body.emergencyType,
+      patientDetails: body.patientDetails
+    });
 
     // Create the emergency request
     const emergencyRequest = new EmergencyRequest({
@@ -106,6 +124,10 @@ export async function POST(request: NextRequest) {
 
   } catch (error: any) {
     console.error('Error creating emergency request:', error);
+    console.error('Error details:', error.message);
+    if (error.errors) {
+      console.error('Validation errors:', error.errors);
+    }
     return NextResponse.json(
       { error: 'Failed to create emergency request', details: error.message },
       { status: 500 }
