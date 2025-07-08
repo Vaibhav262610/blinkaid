@@ -261,7 +261,7 @@ export default function DriverDashboard() {
             <div className="bg-red-600 p-2 rounded-lg">
               <Ambulance className="h-6 w-6 text-white" />
             </div>
-            <span className="text-xl font-bold text-gray-900">RapidResponse Driver</span>
+            <span className="text-xl font-bold text-gray-900">blinkAid Driver</span>
           </div>
           <div className="flex items-center gap-2 sm:gap-4">
             <div className="hidden sm:flex items-center gap-2">

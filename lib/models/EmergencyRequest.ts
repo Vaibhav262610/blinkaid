@@ -2,7 +2,7 @@ import mongoose, { Document, Schema } from 'mongoose';
 
 export interface IEmergencyRequest extends Document {
   requestId: string;
-  userId: mongoose.Types.ObjectId;
+  userId?: mongoose.Types.ObjectId;
   driverId?: mongoose.Types.ObjectId;
   emergencyType: 'cardiac' | 'accident' | 'breathing' | 'stroke' | 'trauma' | 'overdose' | 'allergic' | 'other';
   priority: 'low' | 'medium' | 'high' | 'critical';
@@ -67,7 +67,7 @@ const emergencyRequestSchema = new Schema<IEmergencyRequest>({
   userId: {
     type: Schema.Types.ObjectId,
     ref: 'User',
-    required: true
+    required: false
   },
   driverId: {
     type: Schema.Types.ObjectId,
@@ -154,5 +154,7 @@ emergencyRequestSchema.index({ status: 1, isActive: 1 });
 emergencyRequestSchema.index({ userId: 1, createdAt: -1 });
 emergencyRequestSchema.index({ driverId: 1, status: 1 });
 emergencyRequestSchema.index({ requestTime: -1 });
+
+delete mongoose.models.EmergencyRequest; // Ensure fresh schema
 
 export default mongoose.models.EmergencyRequest || mongoose.model<IEmergencyRequest>('EmergencyRequest', emergencyRequestSchema); 

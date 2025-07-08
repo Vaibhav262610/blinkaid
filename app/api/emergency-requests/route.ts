@@ -72,9 +72,11 @@ export async function GET(request: NextRequest) {
 // POST - Create new emergency request
 export async function POST(request: NextRequest) {
   try {
+    console.log('Starting emergency request creation...');
     await dbConnect();
+    console.log('Database connected successfully');
+    
     const body = await request.json();
-
     console.log('Received request body:', JSON.stringify(body, null, 2));
 
     // Validate required fields
@@ -99,24 +101,33 @@ export async function POST(request: NextRequest) {
     }
 
     console.log('Creating emergency request with data:', {
-      userId: body.userId,
       emergencyType: body.emergencyType,
-      patientDetails: body.patientDetails
+      patientDetails: body.patientDetails,
+      pickupLocation: body.pickupLocation
     });
 
-    // Create the emergency request
+    // Create the emergency request (userId is optional for emergency requests)
     const emergencyRequest = new EmergencyRequest({
       ...body,
       requestTime: new Date(),
       status: 'pending'
     });
 
+    console.log('Emergency request object created, saving to database...');
     await emergencyRequest.save();
+    console.log('Emergency request saved successfully with ID:', emergencyRequest._id);
 
-    // Populate user and driver details for response
-    await emergencyRequest.populate('userId', 'firstName lastName email phone');
-    await emergencyRequest.populate('driverId', 'vehicleNumber driver.firstName driver.lastName');
+    // Only populate if userId exists
+    if (emergencyRequest.userId) {
+      console.log('Populating userId...');
+      await emergencyRequest.populate('userId', 'firstName lastName email phone');
+    }
+    if (emergencyRequest.driverId) {
+      console.log('Populating driverId...');
+      await emergencyRequest.populate('driverId', 'vehicleNumber driver.firstName driver.lastName');
+    }
 
+    console.log('Emergency request created successfully');
     return NextResponse.json({
       message: 'Emergency request created successfully',
       request: emergencyRequest
@@ -127,6 +138,9 @@ export async function POST(request: NextRequest) {
     console.error('Error details:', error.message);
     if (error.errors) {
       console.error('Validation errors:', error.errors);
+    }
+    if (error.code) {
+      console.error('Error code:', error.code);
     }
     return NextResponse.json(
       { error: 'Failed to create emergency request', details: error.message },

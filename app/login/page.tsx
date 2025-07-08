@@ -84,7 +84,7 @@ export default function LoginPage() {
             <div className="bg-red-600 p-2 rounded-lg">
               <Ambulance className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
             </div>
-            <span className="text-lg sm:text-xl font-bold text-gray-900">RapidResponse</span>
+            <span className="text-lg sm:text-xl font-bold text-gray-900">blinkAid</span>
           </div>
           <CardTitle className="text-xl sm:text-2xl">Welcome Back</CardTitle>
           <CardDescription className="text-sm">Sign in to access your emergency response dashboard</CardDescription>

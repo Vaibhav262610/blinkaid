@@ -2,9 +2,9 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Emergency Ambulance Network',
+  title: 'blinkAid',
   description: 'Real-time emergency ambulance tracking and dispatch system',
-  generator: 'Emergency Ambulance Network',
+  generator: 'blinkAid',
   viewport: 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no',
 }
 

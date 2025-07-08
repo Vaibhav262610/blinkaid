@@ -25,11 +25,11 @@ const Admin = mongoose.model('Admin', adminSchema);
 async function createDefaultAdmin() {
   try {
     // Check if admin already exists
-    const existingAdmin = await Admin.findOne({ email: 'admin@rapidresponse.com' });
+    const existingAdmin = await Admin.findOne({ email: 'admin@blinkaid.com' });
     
     if (existingAdmin) {
       console.log('Default admin already exists!');
-      console.log('Email: admin@rapidresponse.com');
+      console.log('Email: admin@blinkaid.com');
       console.log('Password: admin123456');
       return;
     }
@@ -41,7 +41,7 @@ async function createDefaultAdmin() {
     const admin = new Admin({
       firstName: 'System',
       lastName: 'Administrator',
-      email: 'admin@rapidresponse.com',
+      email: 'admin@blinkaid.com',
       password: hashedPassword,
       phone: '+1234567890',
       role: 'admin',
@@ -51,7 +51,7 @@ async function createDefaultAdmin() {
     await admin.save();
     
     console.log('Default admin created successfully!');
-    console.log('Email: admin@rapidresponse.com');
+    console.log('Email: admin@blinkaid.com');
     console.log('Password: admin123456');
     console.log('Please change the password after first login.');
     

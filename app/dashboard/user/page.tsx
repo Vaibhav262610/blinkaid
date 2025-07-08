@@ -110,7 +110,7 @@ export default function UserDashboard() {
             <div className="bg-red-600 p-2 rounded-lg">
               <Ambulance className="h-6 w-6 text-white" />
             </div>
-            <span className="text-xl font-bold text-gray-900">RapidResponse</span>
+            <span className="text-xl font-bold text-gray-900">blinkAid</span>
           </div>
           <div className="flex items-center gap-2 sm:gap-4">
             <Badge className="bg-green-100 text-green-800 text-xs sm:text-sm">Active User</Badge>

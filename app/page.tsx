@@ -14,7 +14,7 @@ export default function HomePage() {
             <div className="bg-red-600 p-2 rounded-lg">
               <Ambulance className="h-6 w-6 text-white" />
             </div>
-            <span className="text-xl font-bold text-gray-900">RapidResponse</span>
+            <span className="text-xl font-bold text-gray-900">blinkAid</span>
           </div>
           <nav className="hidden md:flex items-center gap-6">
             <Link href="#features" className="text-gray-600 hover:text-gray-900">
@@ -39,52 +39,50 @@ export default function HomePage() {
       </header>
 
       {/* Hero Section */}
-      <section className="py-12 sm:py-20 px-3 sm:px-4">
-        <div className="container mx-auto text-center">
-          <Badge className="mb-3 sm:mb-4 bg-red-100 text-red-800 hover:bg-red-100 text-xs sm:text-sm">🚨 Emergency Response Platform</Badge>
-          <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-gray-900 mb-4 sm:mb-6">
-            Connect to the Nearest
-            <span className="text-red-600 block">Ambulance in Seconds</span>
-          </h1>
-          <p className="text-base sm:text-xl text-gray-600 mb-6 sm:mb-8 max-w-3xl mx-auto px-2">
-            Revolutionary emergency response network that connects patients with nearby ambulances in real-time. Every
-            second counts in an emergency.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-            <Link href="/emergency">
-              <Button size="lg" className="bg-red-600 hover:bg-red-700 text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4">
-                🚨 Emergency Request
+      <section className="min-h-screen flex items-center justify-center px-4 py-8">
+        <div className="text-center max-w-4xl mx-auto">
+          <div className="mb-8">
+            <div className="bg-red-600 p-4 rounded-full w-20 h-20 mx-auto mb-6 flex items-center justify-center">
+              <Ambulance className="h-10 w-10 text-white" />
+            </div>
+            <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold text-gray-900 mb-4">
+              Emergency
+              <span className="text-red-600 block">Response</span>
+            </h1>
+            <p className="text-lg sm:text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+              Patent-pending technology for instant emergency coordination
+            </p>
+          </div>
+          
+          <div className="space-y-4">
+            <Link href="/emergency" className="block">
+              <Button size="lg" className="w-full max-w-md h-20 text-2xl sm:text-3xl bg-red-600 hover:bg-red-700 shadow-lg">
+                🚨 EMERGENCY - HELP NOW
               </Button>
             </Link>
-            <Link href="/signup">
-              <Button size="lg" variant="outline" className="text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 bg-transparent">
-                Join as Driver
-              </Button>
-            </Link>
+            <p className="text-sm text-gray-500">One tap to get immediate assistance</p>
           </div>
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
-            <div>
-              <div className="text-3xl font-bold text-red-600 mb-2">2.5 min</div>
-              <div className="text-gray-600">Average Response Time</div>
-            </div>
-            <div>
-              <div className="text-3xl font-bold text-red-600 mb-2">500+</div>
-              <div className="text-gray-600">Active Ambulances</div>
-            </div>
-            <div>
-              <div className="text-3xl font-bold text-red-600 mb-2">10,000+</div>
-              <div className="text-gray-600">Lives Saved</div>
-            </div>
-            <div>
-              <div className="text-3xl font-bold text-red-600 mb-2">24/7</div>
-              <div className="text-gray-600">Available Service</div>
-            </div>
+      {/* Emergency Action Section */}
+      <section className="py-16 bg-red-50">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Emergency Response System</h2>
+          <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+            Revolutionary patent-pending technology for instant emergency response coordination
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link href="/emergency">
+              <Button size="lg" className="bg-red-600 hover:bg-red-700 text-xl px-12 py-6 h-16">
+                🚨 EMERGENCY - GET HELP NOW
+              </Button>
+            </Link>
+            <Link href="/signup">
+              <Button size="lg" variant="outline" className="text-xl px-12 py-6 h-16 bg-white">
+                Join as Driver
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
@@ -248,7 +246,7 @@ export default function HomePage() {
                 <div className="bg-red-600 p-2 rounded-lg">
                   <Ambulance className="h-5 w-5 text-white" />
                 </div>
-                <span className="text-lg font-bold">RapidResponse</span>
+                <span className="text-lg font-bold">blinkAid</span>
               </div>
               <p className="text-gray-400">Connecting lives with emergency care through innovative technology.</p>
             </div>
@@ -318,7 +316,7 @@ export default function HomePage() {
           </div>
 
           <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-            <p>&copy; 2024 RapidResponse. All rights reserved. Emergency services available 24/7.</p>
+            <p>&copy; 2024 blinkAid. All rights reserved. Emergency services available 24/7.</p>
           </div>
         </div>
       </footer>
